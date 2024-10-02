@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
-            <div class="dropdown">
+            <div className="dropdown">
                 <button onClick={toggleVisibility}>
                     <BsSliders2 style={{ color: "#696B6C" }} />
                     Display
@@ -20,18 +20,18 @@ const Navbar = () => {
                 </button>
             </div>
             {isVisible && <div className="navbar-menu" >
-                <div class="menu-container">
-                    <div class="menu-item">
-                        <label class="menu-label" for="grouping">Grouping</label>
-                        <select class="menu-select" id="grouping">
+                <div className="menu-container">
+                    <div className="menu-item">
+                        <label className="menu-label" for="grouping">Grouping</label>
+                        <select className="menu-select" id="grouping">
                             <option>Status</option>
                             <option>Users</option>
                             <option>Priority</option>
                         </select>
                     </div>
-                    <div class="menu-item">
-                        <label class="menu-label" for="ordering">Ordering</label>
-                        <select class="menu-select" id="ordering">
+                    <div className="menu-item">
+                        <label className="menu-label" for="ordering">Ordering</label>
+                        <select className="menu-select" id="ordering">
                             <option>Priority</option>
                         </select>
                     </div>

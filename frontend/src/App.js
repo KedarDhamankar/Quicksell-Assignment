@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Card from "./components/Card.js"
 import Navbar from './components/Navbar.js';
+import DisplayTickets from './components/DisplayTicketsMerged.js';
 
 // In progress icon
 import { RiProgress5Line } from "react-icons/ri";
@@ -27,7 +28,7 @@ function App() {
 
       setTickets(data.tickets);
       setUsers(data.users);
-      console.log('Fetched data:', data);
+      alert('Fetched data:', tickets);
 
     }
 
@@ -37,99 +38,8 @@ function App() {
     <>
       <Navbar />
 
-      {/* <DisplayTickets tickets={tickets} users={users} grouping={grouping} sortOption={sortOption} /> */}
-      <div className="content">
-        <div className="cards-section">
-          <div className="card-section-header">
-            <div className="card-section-header-left">
-              <RiProgress5Line />
-              <span>Backlog</span>
-              <span>3</span> {/* cards count */}
-            </div>
-            <div className="card-section-header-right">
-              <FaPlus />
-              <BsThreeDots />
-            </div>
-          </div>
-          <div className="cards-list">
-            <Card />
-            <Card />
-            <Card />
-          </div>
-        </div>
-        <div className="cards-section">
-          <div className="card-section-header">
-            <div className="card-section-header-left">
-              <RiProgress5Line />
-              <span>Backlog</span>
-              <span>3</span> {/* cards count */}
-            </div>
-            <div className="card-section-header-right">
-              <FaPlus />
-              <BsThreeDots />
-            </div>
-          </div>
-          <div className="cards-list">
-            <Card />
-            <Card />
-            <Card />
-          </div>
-        </div>
-        <div className="cards-section">
-          <div className="card-section-header">
-            <div className="card-section-header-left">
-              <RiProgress5Line style={{ color: "#EDC852" }} />
-              <span>Backlog</span>
-              <span>3</span> {/* cards count */}
-            </div>
-            <div className="card-section-header-right">
-              <FaPlus />
-              <BsThreeDots />
-            </div>
-          </div>
-          <div className="cards-list">
-            <Card />
-            <Card />
-            <Card />
-          </div>
-        </div>
-        <div className="cards-section">
-          <div className="card-section-header">
-            <div className="card-section-header-left">
-              <RiProgress5Line />
-              <span>Backlog</span>
-              <span>3</span> {/* cards count */}
-            </div>
-            <div className="card-section-header-right">
-              <FaPlus />
-              <BsThreeDots />
-            </div>
-          </div>
-          <div className="cards-list">
-            <Card />
-            <Card />
-            <Card />
-          </div>
-        </div>
-        <div className="cards-section">
-          <div className="card-section-header">
-            <div className="card-section-header-left">
-              <RiProgress5Line />
-              <span>Backlog</span>
-              <span>3</span> {/* cards count */}
-            </div>
-            <div className="card-section-header-right">
-              <FaPlus />
-              <BsThreeDots />
-            </div>
-          </div>
-          <div className="cards-list">
-            <Card />
-            <Card />
-            <Card />
-          </div>
-        </div>
-      </div>
+      <DisplayTickets tickets={tickets} users={users} grouping={grouping} sortOption={sortOption} />
+
     </>
   );
 }
