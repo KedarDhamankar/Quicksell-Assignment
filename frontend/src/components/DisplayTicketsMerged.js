@@ -13,8 +13,6 @@ import { BsThreeDots } from "react-icons/bs";
 const groupAndSortTickets = (tickets, grouping, sortOption, users) => {
     const groupedTickets = {};
 
-    // console.log(tickets)
-
     // Define all possible labels for each grouping type
     const allLabels = {
         status: ['Backlog', 'Todo', 'In progress', 'Done', 'Cancelled'],
@@ -101,8 +99,15 @@ const DisplayTickets = ({ tickets, users, grouping, sortOption }) => {
 
     return (
         <div className="content">
-            {groupedAndSortedTickets.map(column => (
-                <div>
+            {groupedAndSortedTickets.map(column => {
+                if (grouping === 'user') {
+                    const userName = getUserName(column.title, users);
+                    // Skip rendering if userName is "No user" or if it's "Unassigned"
+                    if (userName === "No user" || column.title === "Unassigned") {
+                        return null;
+                    }
+                }
+                return <div>
                     <div className="cards-section">
                         <div className="card-section-header">
 
@@ -115,7 +120,7 @@ const DisplayTickets = ({ tickets, users, grouping, sortOption }) => {
                                                 column.title}
                                     </span>
                                 </div>
-                                <span>3</span> {/* cards count */}
+                                <span>3</span>
                             </div>
                             <div className="card-section-header-right">
                                 <FaPlus />
@@ -128,13 +133,10 @@ const DisplayTickets = ({ tickets, users, grouping, sortOption }) => {
                                     <Card ticket={ticket} />
                                 </div>
                             ))}
-                            {/* </div> */}
-                            {/* </div> */}
-                            {/* </div> */}
                         </div>
                     </div>
                 </div>
-            ))}
+            })}
         </div>
     );
 };

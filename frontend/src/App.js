@@ -28,10 +28,10 @@ function App() {
       const res = await fetch('https://api.quicksell.co/v1/internal/frontend-assignment')
       const data = await res.json();
 
+      console.log(data)
+
       setTickets(data.tickets);
       setUsers(data.users);
-      // alert('Fetched data:', tickets);
-
     }
 
     fetchDetails()

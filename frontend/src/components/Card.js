@@ -4,14 +4,14 @@ import profile from '../assets/profile.png'
 
 const Card = ({ ticket }) => {
     return (
-        <div class="card">
-            <div class="card-header">
-                <span class="card-id">{ticket.id}</span>
-                <img src={profile} class="profile-image" />
+        <div className="card">
+            <div className="card-header">
+                <span className="card-id">{ticket.id}</span>
+                <img src={profile} className="profile-image" />
             </div>
-            <div class="card-title">{ticket.title}</div>
-            <div class="card-text">
-                <span class="feature-request">Feature Request</span>
+            <div className="card-title">{ticket.title}</div>
+            <div className="card-text">
+                <span className="feature-request">Feature Request</span>
             </div>
         </div>
     )
