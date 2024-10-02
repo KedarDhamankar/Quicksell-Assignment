@@ -92,7 +92,7 @@ const getPriorityLabel = (priority) => {
 
 const getUserName = (userId, users) => {
     const user = users.find(user => user.id === userId);
-    return user ? user.name : 'Unknown User';
+    return user ? user.name : null;
 };
 
 // Updated usage in your React component
@@ -102,34 +102,36 @@ const DisplayTickets = ({ tickets, users, grouping, sortOption }) => {
     return (
         <div className="content">
             {groupedAndSortedTickets.map(column => (
-                <div className="cards-section">
-                    <div className="card-section-header">
+                <div>
+                    <div className="cards-section">
+                        <div className="card-section-header">
 
-                        <div className="card-section-header-left">
-                            <RiProgress5Line />
-                            <div key={column.title} className="ticket-column">
-                                <span>
-                                    {grouping === 'priority' ? getPriorityLabel(column.title) :
-                                        grouping === 'user' ? getUserName(column.title, users) :
-                                            column.title}
-                                </span>
+                            <div className="card-section-header-left">
+                                <RiProgress5Line />
+                                <div key={column.title} className="ticket-column">
+                                    <span>
+                                        {grouping === 'priority' ? getPriorityLabel(column.title) :
+                                            grouping === 'user' ? getUserName(column.title, users) :
+                                                column.title}
+                                    </span>
+                                </div>
+                                <span>3</span> {/* cards count */}
                             </div>
-                            <span>3</span> {/* cards count */}
-                        </div>
-                        <div className="card-section-header-right">
-                            <FaPlus />
-                            <BsThreeDots />
-                        </div>
-                    </div>
-                    <div className="cards-list">
-                        {column.tickets.map(ticket => (
-                            <div className="ticket" key={ticket.id}>
-                                <Card ticket={ticket} />
+                            <div className="card-section-header-right">
+                                <FaPlus />
+                                <BsThreeDots />
                             </div>
-                        ))}
-                        {/* </div> */}
-                        {/* </div> */}
-                        {/* </div> */}
+                        </div>
+                        <div className="cards-list">
+                            {column.tickets.map(ticket => (
+                                <div className="ticket" key={ticket.id}>
+                                    <Card ticket={ticket} />
+                                </div>
+                            ))}
+                            {/* </div> */}
+                            {/* </div> */}
+                            {/* </div> */}
+                        </div>
                     </div>
                 </div>
             ))}
