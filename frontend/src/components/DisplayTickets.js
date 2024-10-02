@@ -1,5 +1,29 @@
 import Card from "./Card";
-import '../App.css';
+import './DisplayTickets.css';
+
+// Backlog icon
+import { IoIosAlert } from "react-icons/io";
+
+// Todo icon
+import { FaRegCircle } from "react-icons/fa";
+
+// In progress icon
+import { RiProgress5Line } from "react-icons/ri";
+
+// Done icon
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
+
+// Plus icon
+import { FaPlus } from "react-icons/fa6";
+
+// Cancelled icon
+import { MdCancel } from "react-icons/md";
+
+// Three dots icon
+import { BsThreeDots } from "react-icons/bs";
+
+import { FaUser } from "react-icons/fa";
+
 
 const groupAndSortTickets = (tickets, grouping, sortOption, users) => {
     const groupedTickets = {};
@@ -81,7 +105,7 @@ const getPriorityLabel = (priority) => {
 
 const getUserName = (userId, users) => {
     const user = users.find(user => user.id === userId);
-    return user ? user.name : NULL;
+    return user ? user.name : null;
 };
 
 // Updated usage in your React component
@@ -89,21 +113,55 @@ const DisplayTickets = ({ tickets, users, grouping, sortOption }) => {
     const groupedAndSortedTickets = groupAndSortTickets(tickets, grouping, sortOption, users);
 
     return (
-        <div className="ticket-columns">
-            {groupedAndSortedTickets.map(column => (
-                <div key={column.title} className="ticket-column">
-                    <h1>
-                        {grouping === 'priority' ? getPriorityLabel(column.title) :
-                            grouping === 'user' ? getUserName(column.title, users) :
-                                column.title}
-                    </h1>
-                    {column.tickets.map(ticket => (
-                        <div className="ticket" key={ticket.id}>
-                            <Card content={content} />
+        <div className="content">
+            {groupedAndSortedTickets.map(column => {
+                if (grouping === 'user') {
+                    const userName = getUserName(column.title, users);
+                    if (userName === null) {
+                        return null;
+                    }
+                }
+
+                const iconMapping = {
+                    'Backlog': { IconComponent: IoIosAlert, color: '#FF0000' },
+                    'Todo': { IconComponent: FaRegCircle, color: '#DFE0E4' },
+                    'In progress': { IconComponent: RiProgress5Line, color: '#E7C96C' },
+                    'Done': { IconComponent: IoCheckmarkDoneCircle, color: '#626DD5' },
+                    'Cancelled': { IconComponent: MdCancel, color: '#9BA2B1' },
+
+                };
+                const defaultIcon = { IconComponent: FaUser, color: '#194794' }
+                const { IconComponent, color } = iconMapping[column.title] || defaultIcon;
+                return <div>
+                    <div className="cards-section">
+                        <div className="card-section-header">
+
+                            <div className="card-section-header-left">
+                                <IconComponent style={{ color: color }} />
+                                <div key={column.title} className="ticket-column">
+                                    <span>
+                                        {grouping === 'priority' ? getPriorityLabel(column.title) :
+                                            grouping === 'user' ? getUserName(column.title, users) :
+                                                column.title}
+                                    </span>
+                                </div>
+                                {/* <span>3</span> */}
+                            </div>
+                            <div className="card-section-header-right">
+                                <FaPlus />
+                                <BsThreeDots />
+                            </div>
                         </div>
-                    ))}
+                        <div className="cards-list">
+                            {column.tickets.map(ticket => (
+                                <div className="ticket" key={ticket.id}>
+                                    <Card ticket={ticket} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            ))}
+            })}
         </div>
     );
 };

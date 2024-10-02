@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import './App.css';
 import Card from "./components/Card.js"
-import DisplayTickets from './components/DisplayTicketsMerged.js';
+import DisplayTickets from './components/DisplayTickets.js';
 
 import { BsSliders2 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";

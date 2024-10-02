@@ -5,10 +5,12 @@
 }
 
 .card-section-header {
+    width: 19vw;
     padding: 5vh 0;
     display: flex;
     flex-direction: row;
-    column-gap: 9vw;
+    justify-content: space-between;
+    margin-right: 2rem;
 }
 
 .card-section-header-left {

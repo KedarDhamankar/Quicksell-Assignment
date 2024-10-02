@@ -2,32 +2,6 @@ body {
     background-color: #f4f6fa;
 }
 
-.content {
-    display: flex;
-    flex-direction: row;
-    padding: 0 2vw;
-}
-
-.card-section-header {
-    padding: 5vh 0;
-    display: flex;
-    flex-direction: row;
-    column-gap: 9vw;
-}
-
-.card-section-header-left {
-    display: flex;
-    flex-direction: row;
-    column-gap: 0.7vw;
-    font-family: Arial, sans-serif;
-}
-
-.card-section-header-right {
-    display: flex;
-    flex-direction: row;
-    column-gap: 0.5vw;
-}
-
 .navbar {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
